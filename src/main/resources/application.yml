@@ -1,0 +1,12 @@
+micronaut:
+  application:
+    name: exampleSystemPropertyIssue
+
+my-configuration:
+  config-a:
+    foo:
+      BAR: 'baz'
+  config-b:
+    foo: {}
+  config-c:
+    foo: {}
