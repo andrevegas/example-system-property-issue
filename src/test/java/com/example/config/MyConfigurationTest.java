@@ -10,10 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /*
+-Dmy-configuration.config-a.foo.BAR='baz'
 -Dmy-configuration.config-b.foo.BAR='baz'
 -Dmy-configuration.config-c.foo[BAR]='baz'
 -Dmy-configuration.config-d.foo.BAR='baz'
  */
+@Property(name = "my-configuration.config-a.foo.BAR1", value = "baz1")
 @Property(name = "my-configuration.config-b.foo.BAR", value = "baz")
 @Property(name = "my-configuration.config-c.foo[BAR]", value = "baz")
 @Property(name = "my-configuration.config-d.foo.BAR", value = "baz")
@@ -39,8 +41,9 @@ public class MyConfigurationTest {
     void check_config_property_value_a() {
         assertNotNull(configA);
         assertNotNull(configA.getFoo());
-        assertEquals(1, configA.getFoo().size());
-        assertEquals(configA.getFoo().keySet().stream().findFirst().orElseThrow(), "bar");
+        assertEquals(2, configA.getFoo().size());
+        assertEquals(configA.getFoo().keySet().toArray()[0], "bar");
+        assertEquals(configA.getFoo().keySet().toArray()[1], "bar1");
     }
 
     @Test
@@ -48,7 +51,7 @@ public class MyConfigurationTest {
         assertNotNull(configB);
         assertNotNull(configB.getFoo());
         assertEquals(1, configB.getFoo().size());
-        assertEquals(configB.getFoo().keySet().stream().findFirst().orElseThrow(), "bar");
+        assertEquals(configB.getFoo().keySet().toArray()[0], "bar");
     }
 
     @Test
@@ -56,7 +59,7 @@ public class MyConfigurationTest {
         assertNotNull(configC);
         assertNotNull(configC.getFoo());
         assertEquals(1, configC.getFoo().size());
-        assertEquals(configC.getFoo().keySet().stream().findFirst().orElseThrow(), "bar");
+        assertEquals(configC.getFoo().keySet().toArray()[0], "bar");
     }
 
     @Test
@@ -64,7 +67,7 @@ public class MyConfigurationTest {
         assertNotNull(configD);
         assertNotNull(configD.getFoo());
         assertEquals(1, configD.getFoo().size());
-        assertEquals(configD.getFoo().keySet().stream().findFirst().orElseThrow(), "bar");
+        assertEquals(configD.getFoo().keySet().toArray()[0], "bar");
     }
 
 }

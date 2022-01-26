@@ -42,10 +42,10 @@ java \
 |_|  |_|_|\___|_|  \___/|_| |_|\__,_|\__,_|\__|
   Micronaut (v3.2.7)
 
-20:11:21.014 [main] INFO  com.example.Task - >>> MyConfiguration(name=config-a, foo={bar=baz})
-20:11:21.016 [main] INFO  com.example.Task - >>> MyConfiguration(name=config-b, foo={})
-20:11:21.016 [main] INFO  com.example.Task - >>> MyConfiguration(name=config-c, foo={-bar='baz'})
-20:11:21.016 [main] INFO  com.example.Task - >>> MyConfiguration(name=config-d, foo={bar='baz'})
+20:21:21.497 [main] INFO  com.example.Task - >>> MyConfiguration(name=config-a, foo={bar=baz, bar1='baz1'})
+20:21:21.499 [main] INFO  com.example.Task - >>> MyConfiguration(name=config-b, foo={})
+20:21:21.499 [main] INFO  com.example.Task - >>> MyConfiguration(name=config-c, foo={-bar='baz'})
+20:21:21.499 [main] INFO  com.example.Task - >>> MyConfiguration(name=config-d, foo={bar='baz'})
 ```
 
 As demonstrated above: 
@@ -54,10 +54,13 @@ As demonstrated above:
 
 `config-b` remains empty. 
 
-`config-c` can successfully add the item from the system property. 
+`config-c` can successfully add the item from the system property. But it since it's the wrong syntax the key becomes `-bar`. 
 
 `config-d` uses same syntax as `config-b`, but since it hasn't been defined as empty in the app.yml it also can successfully add the item from the system property.
 
+Or
+
+The [unit test](src/test/java/com/example/config/MyConfigurationTest.java) demonstrates the expected behaviours. 
 
 ---
 ---
