@@ -1,4 +1,4 @@
-##Intro
+## Intro
 
 The configuration [MyConfiguration.java](src/main/java/com/example/config/MyConfiguration.java) has a `Map<String, String>` which it's loaded from application yml or system properties (overwrite). However, looks like if the config it's defined as empty (`config-b`), micronaut cannot load the value from system properties in some cases.  
 
@@ -32,7 +32,7 @@ java \
     -jar build/libs/example-system-property-issue-0.1-all.jar
 ```
 
-###Output/Results
+### Output/Results
 
 ```
  __  __ _                                  _
@@ -63,7 +63,7 @@ As demonstrated above:
 ---
 ---
 
-#Bootstrap README
+# Bootstrap README
 
 ---
 
